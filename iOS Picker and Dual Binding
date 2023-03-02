@@ -1,0 +1,43 @@
+//
+//  ContentView.swift
+//  WeSplit
+//
+//  Created by Charles Low on 01/03/2023.
+//
+
+import SwiftUI
+// We want to use all the functionality given to us by the SwiftUI framework
+struct ContentView: View {
+    var students = ["Harry", "Hermione", "Ron"]
+    @State var selectedStudent = "Harry"
+    @State private var name = String()
+    
+    var body: some View {
+        NavigationView{
+            Form {
+                Picker("Select your student", selection:
+                        $selectedStudent){
+                    ForEach(students, id: \.self) {
+                        //The only thing unique about the string names, is the string itself. Therefore, id:\.self
+                        Text($0)
+                    }
+                }
+                ForEach(4..<100){ number in
+                    Text("Row \(number)")
+                    
+                }
+                TextField("Enter your name", text: $name)
+                Text("Hello world!")
+                //This is a text view saying "Hello world!"
+            }
+        }
+    }
+}
+    struct ContentView_Previews: PreviewProvider {
+        //ContentView_Previews struct, which conforms to the PreviewProvider protocol.
+        static var previews: some View {
+            ContentView()
+        }
+    }
+    
+
